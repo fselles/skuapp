@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  duplex: MyString
+  media: MyString
+  inslag_staand: MyString
+  inslag_liggend: MyString
+  kleur: MyString
+  aantal_drukvel: MyString
+
+two:
+  name: MyString
+  duplex: MyString
+  media: MyString
+  inslag_staand: MyString
+  inslag_liggend: MyString
+  kleur: MyString
+  aantal_drukvel: MyString

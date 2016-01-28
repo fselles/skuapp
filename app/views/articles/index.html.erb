@@ -1,0 +1,60 @@
+<h1>SKU overzicht HelloPrint</h1>
+
+<table id="example" class="display" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th width="250">Naam</th>
+      <th width="100">Duplex</th>
+      <th width="150">Media</th>
+      <th width="100">Papiertype</th>
+      <th width="150">Inslag staand</th>
+      <th width="150">Inslag liggend</th>
+      <th width="150">Kleur</th>
+      <th width="100">Aantal drukvel</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= link_to article.name, article %></td>
+        <td><%= article.duplex %></td>
+        <td><%= article.media %></td>
+        <td><%= article.papiertype %></td>
+        <td><%= article.inslag_staand %></td>
+        <td><%= article.inslag_liggend %></td>
+        <td><%= article.kleur %></td>
+        <td><%= article.aantal_drukvel %></td>
+        <td class="button tiny"><%= link_to 'Weergeven', article, :class=>("whitetext") %></td>
+        <td class="button tiny"><%= link_to 'Aanpassen', edit_article_path(article),:class=>("whitetext") %></td>
+        <td class="button tiny"><%= link_to 'Verwijderen', article, :class=>("whitetext"), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<nav>
+  <ul>
+<li class="button small"><%= link_to 'Nieuw artikel', new_article_path %> </li>
+<li class="button small"><%=link_to "Download XML", articles_path(format: "xml") %></li>
+<li class="button small"><%= link_to "Download CSV", articles_path(format: "csv") %></li>
+</ul>
+</nav>
+
+<div>
+<h3>Import CSV file</h3>
+ 
+<%= form_tag import_articles_path, multipart: true do %>
+<%= file_field_tag :file %> 
+<%= submit_tag "Import CSV", :class=> 'whitetext' ' ' 'button tiny' %>
+<% end %>
+</div>
+
+
+
+          
+
+

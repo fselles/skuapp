@@ -1,0 +1,50 @@
+<%= form_for(@article) do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% @article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, 'Naam' %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :duplex %><br>
+    <%= f.select :duplex, Article::DUPLEX %>
+  </div>
+  <div class="field">
+    <%= f.label :media %><br>
+    <%= f.text_field :media %>
+  </div>
+    <div class="field">
+    <%= f.label :papiertype %>
+    <%= f.select :papiertype, Article::PAPIERTYPEN %><br>
+  </div>
+  <div class="field">
+    <%= f.label :inslag_staand %><br>
+    <%= f.text_field :inslag_staand %>
+  </div>
+  <div class="field">
+    <%= f.label :inslag_liggend %><br>
+    <%= f.text_field :inslag_liggend %>
+  </div>
+  <div class="field">
+    <%= f.label :kleur %><br>
+    <%= f.select :kleur, Article::KLEUR %>
+  </div>
+  <div class="field">
+    <%= f.label :aantal_drukvel %><br>
+    <%= f.text_field :aantal_drukvel %>
+  </div>
+
+  <div class="actions" >
+    <%= f.submit 'Bevestigen', :class=> 'whitetext' ' ' 'button tiny' %>
+  </div>
+<% end %>

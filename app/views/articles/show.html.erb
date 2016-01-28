@@ -1,0 +1,42 @@
+<p>
+  <strong>Name:</strong>
+  <%= @article.name %>
+</p>
+
+<p>
+  <strong>Duplex:</strong>
+  <%= @article.duplex %>
+</p>
+
+<p>
+  <strong>Media:</strong>
+  <%= @article.media %>
+</p>
+
+<p>
+  <strong>Papiertype:</strong>
+  <%= @article.papiertype %>
+</p>
+
+<p>
+  <strong>Inslag staand:</strong>
+  <%= @article.inslag_staand %>
+</p>
+
+<p>
+  <strong>Inslag liggend:</strong>
+  <%= @article.inslag_liggend %>
+</p>
+
+<p>
+  <strong>Kleur:</strong>
+  <%= @article.kleur %>
+</p>
+
+<p>
+  <strong>Aantal drukvel:</strong>
+  <%= @article.aantal_drukvel %>
+</p>
+
+<%= link_to 'Aanpassen', edit_article_path(@article), :class=> 'whitetext' ' ' 'button tiny' %>
+<%= link_to 'Terug', articles_path, :class=> 'whitetext' ' ' 'button tiny' %>

@@ -38,9 +38,9 @@
 
 <nav>
   <ul>
-<li class="button small"><%= link_to 'Nieuw artikel', new_article_path %> </li>
-<li class="button small"><%=link_to "Download XML", articles_path(format: "xml") %></li>
-<li class="button small"><%= link_to "Download CSV", articles_path(format: "csv") %></li>
+<li class="button small"><%= link_to 'Nieuw artikel', new_article_path, :class=>("whitetext") %> </li>
+<li class="button small"><%=link_to "Download XML", articles_path(format: "xml"), :class=>("whitetext") %></li>
+<li class="button small"><%= link_to "Download CSV", articles_path(format: "csv"), :class=>("whitetext") %></li>
 </ul>
 </nav>
 

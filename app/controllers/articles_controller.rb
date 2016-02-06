@@ -4,13 +4,20 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.order('name ASC').all
+    # @articles = Article.order('name ASC').all
+    # @articles = Article.all
+    if params[:search]
+      @articles = Article.search(params[:search]).order("name ASC")
+    else
+      @articles = Article.all.order("name ASC")
+    end
     respond_to do |format|
       format.html
       format.xml
       format.csv { send_data @articles.to_csv }
     end
   end
+
 
   # GET /articles/1
   # GET /articles/1.json
@@ -33,7 +40,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to @article, notice: 'Artikel is succesvol aangemaakt.' }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
@@ -47,7 +54,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to @article, notice: 'Artikel is succesvol aangepast.' }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit }

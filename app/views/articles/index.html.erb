@@ -1,16 +1,27 @@
 <h1>SKU overzicht HelloPrint</h1>
+<div>
+<%= form_tag(articles_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Zoek artikelen" %>
+<%= submit_tag "Zoeken" %>
+<% end %>
 
-<table id="example" class="display" cellspacing="0" width="100%">
+<% if @articles.present? %>
+<% else %>
+  <p>Er zijn geen artikelen gevonden met de zoekterm(en) <%= params[:search] %>.</p>
+<% end %>
+<br>
+</div>
+<table>
   <thead>
     <tr>
-      <th width="250">Naam</th>
-      <th width="100">Duplex</th>
-      <th width="150">Media</th>
-      <th width="100">Papiertype</th>
-      <th width="150">Inslag staand</th>
-      <th width="150">Inslag liggend</th>
-      <th width="150">Kleur</th>
-      <th width="100">Aantal drukvel</th>
+      <th>Naam</th>
+      <th>Duplex</th>
+      <th>Media</th>
+      <th>Papiertype</th>
+      <th>Inslag staand</th>
+      <th>Inslag liggend</th>
+      <th>Kleur</th>
+      <th>Aantal drukvel</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -37,21 +48,22 @@
 <br>
 
 <nav>
-  <ul>
+  <ul style="list-style: none;">
 <li class="button small"><%= link_to 'Nieuw artikel', new_article_path, :class=>("whitetext") %> </li>
 <li class="button small"><%=link_to "Download XML", articles_path(format: "xml"), :class=>("whitetext") %></li>
 <li class="button small"><%= link_to "Download CSV", articles_path(format: "csv"), :class=>("whitetext") %></li>
+<li>
+  <h3>Importeer CSV file</h3>
+   
+    <%= form_tag import_articles_path, multipart: true do %>
+    <%= file_field_tag :file %> 
+    <%= submit_tag "Import CSV", :class=> 'whitetext' ' ' 'button tiny' %>
+    <% end %>
+</li>
 </ul>
-</nav>
 
-<div>
-<h3>Import CSV file</h3>
- 
-<%= form_tag import_articles_path, multipart: true do %>
-<%= file_field_tag :file %> 
-<%= submit_tag "Import CSV", :class=> 'whitetext' ' ' 'button tiny' %>
-<% end %>
-</div>
+
+</nav>
 
 
 

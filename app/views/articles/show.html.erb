@@ -1,42 +1,45 @@
-<p>
+
+<ul style="list-style: none;">
+<li>
   <strong>Name:</strong>
   <%= @article.name %>
-</p>
+</li>
 
-<p>
+<li>
   <strong>Duplex:</strong>
   <%= @article.duplex %>
-</p>
+</li>
 
-<p>
+<li>
   <strong>Media:</strong>
   <%= @article.media %>
-</p>
+</li>
 
-<p>
+<li>
   <strong>Papiertype:</strong>
   <%= @article.papiertype %>
-</p>
+</li>
 
-<p>
+<li>
   <strong>Inslag staand:</strong>
   <%= @article.inslag_staand %>
-</p>
+</li>
 
-<p>
+<li>
   <strong>Inslag liggend:</strong>
   <%= @article.inslag_liggend %>
-</p>
+</li>
 
-<p>
+<li>
   <strong>Kleur:</strong>
   <%= @article.kleur %>
-</p>
+</li>
 
-<p>
+<li>
   <strong>Aantal drukvel:</strong>
   <%= @article.aantal_drukvel %>
-</p>
+</li>
+</ul>
 
 <%= link_to 'Aanpassen', edit_article_path(@article), :class=> 'whitetext' ' ' 'button tiny' %>
 <%= link_to 'Terug', articles_path, :class=> 'whitetext' ' ' 'button tiny' %>

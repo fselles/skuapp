@@ -20,11 +20,11 @@
           <%= link_to "Home", root_url, class: 'button'  %>
           <% if current_user %>
             <%= link_to current_user.name, current_user, class: 'button'  %>
-            <%= link_to "Account Settings", edit_user_path(current_user), class: 'button'  %>
-            <%= link_to 'Sign Out', session_path, method: :delete, class: 'button' %>
-          <% else %>
-            <%= link_to 'Sign Up', aanmelden_path, class: 'button' %>
-            <%= link_to 'Sign In', inloggen_path, class: 'button' %>
+            <%= link_to "Account Instellingen", edit_user_path(current_user), class: 'button'  %>
+            <%= link_to 'Uitloggen', session_path, method: :delete, class: 'button' %>
+          <% end %>
+            <% if current_user && current_user.admin? %>
+            <%= link_to "Gebruikers instellingen", users_path, class: 'button'  %>
           <% end %>
         </p>
       </nav>

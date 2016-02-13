@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :require_signin, except: [:new, :create]
+  before_action :require_signin
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
@@ -44,7 +44,8 @@ class ArticlesController < ApplicationController
         format.html { redirect_to @article, notice: 'Artikel is succesvol aangemaakt.' }
         format.json { render :show, status: :created, location: @article }
       else
-        format.html { render :new }
+        format.html { flash.now[:alert] = "Er zijn fouten bij het aanmaken van het artikel!" 
+        render :new }
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
@@ -58,7 +59,8 @@ class ArticlesController < ApplicationController
         format.html { redirect_to @article, notice: 'Artikel is succesvol aangepast.' }
         format.json { render :show, status: :ok, location: @article }
       else
-        format.html { render :edit }
+        format.html { flash.now[:alert] = "Er zijn fouten bij het updaten van het artikel!"
+        render :edit }
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end

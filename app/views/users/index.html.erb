@@ -9,3 +9,7 @@
     </li>
   <% end %>
 </ul>
+
+<% if current_user && current_user.admin? %>
+	<%= link_to "Nieuwe gebruiker", new_user_path, :class => 'button' %>
+<% end %>

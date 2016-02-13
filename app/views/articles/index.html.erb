@@ -1,4 +1,13 @@
-<h1>SKU overzicht HelloPrint</h1>
+<h2>SKU overzicht HelloPrint</h2>
+
+<nav>
+  <ul style="list-style: none;">
+<li class="button small"><%= link_to 'Nieuw artikel', new_article_path, :class=>("whitetext") %> </li>
+<li class="button small"><%=link_to "Download XML", articles_path(format: "xml"), :class=>("whitetext") %></li>
+<li class="button small"><%= link_to "Download CSV", articles_path(format: "csv"), :class=>("whitetext") %></li>
+<li>
+</nav>
+
 <div>
 <%= form_tag(articles_path, :method => "get", id: "search-form") do %>
 <%= text_field_tag :search, params[:search], placeholder: "Zoek artikelen" %>
@@ -53,14 +62,17 @@
 <li class="button small"><%=link_to "Download XML", articles_path(format: "xml"), :class=>("whitetext") %></li>
 <li class="button small"><%= link_to "Download CSV", articles_path(format: "csv"), :class=>("whitetext") %></li>
 <li>
+
+  <% if current_user && current_user.admin? %>
   <h3>Importeer CSV file</h3>
    
     <%= form_tag import_articles_path, multipart: true do %>
     <%= file_field_tag :file %> 
-    <%= submit_tag "Import CSV", :class=> 'whitetext' ' ' 'button tiny' %>
+    <%= submit_tag "Import CSV", :class=> 'whitetext' ' ' 'button small' %>
     <% end %>
 </li>
 </ul>
+<% end %>
 
 
 </nav>

@@ -6,9 +6,9 @@
 </article>
 <footer>
   <nav>
-    <% if current_user?(@user) %>
-      <%= link_to 'Edit Account', edit_user_path(@user), class: 'button' %>
-      <%= link_to 'Delete Account', @user,
+    <% if current_user?(@user) || current_user.admin? %>
+      <%= link_to 'Account aanpassen', edit_user_path(@user), class: 'button' %>
+      <%= link_to 'Account verwijderen', @user,
               method: :delete,
               data: { confirm: 'Weet je zeker dat je dit account wilt verwijderen?' },
               class: 'button' %>

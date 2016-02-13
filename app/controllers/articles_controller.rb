@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :require_signin, except: [:new, :create]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles

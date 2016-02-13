@@ -14,11 +14,26 @@
 
   <body>
     <div class="row">
-    <% flash.each do |name, msg| %>
-    <% if msg.is_a?(String) %>
-      <%= content_tag :div, msg, class: "alert-box #{name} radius" %>
+      <header>
+      <nav>
+        <p>
+          <%= link_to "Home", root_url, class: 'button'  %>
+          <% if current_user %>
+            <%= link_to current_user.name, current_user, class: 'button'  %>
+            <%= link_to "Account Settings", edit_user_path(current_user), class: 'button'  %>
+            <%= link_to 'Sign Out', session_path, method: :delete, class: 'button' %>
+          <% else %>
+            <%= link_to 'Sign Up', aanmelden_path, class: 'button' %>
+            <%= link_to 'Sign In', inloggen_path, class: 'button' %>
+          <% end %>
+        </p>
+      </nav>
+      </header>
+      <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <%= content_tag :div, msg, class: "alert-box #{name} radius" %>
+        <% end %>
       <% end %>
-    <% end %>
       <div class="small-12 large-12 columns">
             <%= yield %>
       </div>

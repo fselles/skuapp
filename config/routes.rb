@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :users
   resources :articles do
   collection { post :import }
   end
+
+  get 'aanmelden' => 'users#new'
+  get "inloggen" => "sessions#new"
+
 
   root 'articles#index'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -17,3 +17,6 @@
 /tmp
 /.DS_Store
 .DS_Store
+
+# extra files to ignore
+/config/secrets.yml

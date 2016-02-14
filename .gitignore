@@ -19,4 +19,4 @@
 .DS_Store
 
 # extra files to ignore
-/config/secrets.yml
+config/secrets.yml
